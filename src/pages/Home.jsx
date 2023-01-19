@@ -3,7 +3,7 @@ import ProductList from '../containers/ProductList'
 const Home = () => {
  return (
   <React.Fragment>
-   <ProductList/>
+   <ProductList categor= {0}/>
   </React.Fragment>
  );
 };

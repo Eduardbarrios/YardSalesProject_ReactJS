@@ -4,7 +4,7 @@ import AppContext from '@Context/AppContext'
 import '@styles/MyOrder.scss';
 import flecha from '@icons/flechita.svg';
 
-const MyOrder = () => {
+const MyOrder = ({togleOrder}) => {
 	const {state} = React.useContext(AppContext)
 	const sumTotal = ()=>{
 		const reducer = (acumulator, currentValue) => acumulator + currentValue.price;
@@ -14,14 +14,15 @@ const MyOrder = () => {
 	return (
 		<aside className="MyOrder">
 			<div className="title-container">
-				<img src={flecha} alt="arrow" />
+				<img className='arrow' src={flecha} alt="arrow" onClick={togleOrder} />
 				<p className="title">My order</p>
 			</div>
 			<div className="my-order-content">
 				{state.cart.map((product, index) =>(
 					<OrderItem indexValue = {index} product={product} key = {`orderItem-${index}`}/>
 				))}
-				<div className="order">
+			</div>
+			<div className="order">
 					<p>
 						<span>Total</span>
 					</p>
@@ -30,7 +31,6 @@ const MyOrder = () => {
 				<button className="primary-button">
 					Checkout
 				</button>
-			</div>
 		</aside>
 	);
 }

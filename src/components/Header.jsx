@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import '@styles/Header.scss';
 import Menu from '@components/Menu';
+import MobileMenu from '@components/MobileMenu';
 import MyOrder from '@containers/MyOrder';
 import AppContext from '@Context/AppContext'
 import menu from '@icons/icon_menu.svg';
@@ -11,16 +12,20 @@ import shoppingCart from '@icons/icon_shopping_cart.svg';
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleOrders, setToggleOrders] = useState(false);
+  const [toggleMobileMenu, setToggleMobileMenu] = useState(false);
   const handleToggleMenu = ()=>{
     setToggleMenu(!toggleMenu);
   }
   const handleToggleOrders = ()=>{
     setToggleOrders(!toggleOrders);
   }
+  const handleToggleMobileMenu = ()=>{
+    setToggleMobileMenu(!toggleMobileMenu);
+  }
   const {state} = React.useContext(AppContext)
  return (
  <nav>
-  <img src={menu} alt="menu" className="menu" />
+  <img src={menu} alt="menu" className="menu" onClick={handleToggleMobileMenu}/>
   <div className="navbar-left">
     <img src={logo} alt="logo" className="logo" />
     <ul>
@@ -28,19 +33,19 @@ const Header = () => {
         <a href="/">All</a>
       </li>
       <li>
-        <a href="/">Clothes</a>
+        <a href="/clothes">Clothes</a>
       </li>
       <li>
-        <a href="/">Electronics</a>
+        <a href="/electronics">Electronics</a>
       </li>
       <li>
-        <a href="/">Furnitures</a>
+        <a href="/forniture">Furnitures</a>
       </li>
       <li>
-        <a href="/">Toys</a>
+        <a href="/toys">Toys</a>
       </li>
       <li>
-        <a href="/">Others</a>
+        <a href="/others">Others</a>
       </li>
     </ul>
   </div>
@@ -63,7 +68,9 @@ const Header = () => {
     </ul>
   </div>
   {toggleMenu && <Menu/>}
-  {toggleOrders && <MyOrder/>}
+  {toggleOrders && <MyOrder togleOrder = {handleToggleOrders}/>}
+  {toggleMobileMenu && <MobileMenu toggleMobileMenu = {handleToggleMobileMenu}/>}
+
 </nav>
 
  );

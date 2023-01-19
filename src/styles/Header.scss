@@ -1,12 +1,16 @@
 @import 'vars';
 nav {
+  position: sticky;
+  top: 0;
  display: flex;
  justify-content: space-between;
- padding: 0 24px;
  border-bottom: 1px solid var(--very-light-pink);
+ background-color: var(--white);
 }
 .menu {
  display: none;
+ padding-left: 20px;
+ cursor: pointer;
 }
 .logo {
  width: 100px;
@@ -19,6 +23,8 @@ nav {
  display: flex;
  align-items: center;
  height: 60px;
+ padding-right: 20px;
+
 }
 .navbar-left {
  display: flex;
@@ -63,6 +69,7 @@ nav {
  justify-content: center;
  align-items: center;
 }
+
 @media (max-width: 640px) {
  .menu {
    display: block;
