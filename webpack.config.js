@@ -1,14 +1,13 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { pathToFileURL } = require('url');
 
 module.exports = {
  entry: './src/index.js',
  output:{
   path: path.resolve(__dirname, 'dist'),
   filename: 'bundle.js',
-  publicPath: '/'
+  publicPath: './'
  },
  mode:'development',
  resolve:{
